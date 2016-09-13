@@ -113,15 +113,27 @@ class Crawler(threading.Thread):
         return key
 
     def get_csv(self, key):
-        response.content_type = 'application/octet-stream'
-        response.headers['Content-Disposition'] = "attachment; filename='{key}.csv'".format(key=key)
-        stream = StringIO()
-        writer = csv.writer(stream)
-        writer.writerow(["title", "brand", "price"])
-        for p in self.results[key]:
-            writer.writerow([p["title"], p["brand"], p["price"]])
-        stream.seek(0)
-        return stream.getvalue().encode('shift-jis')
+        if key not in self.results:
+            return "Not Found"
+
+        try:
+            response.content_type = 'application/octet-stream'
+            response.headers['Content-Disposition'] = "attachment; filename='{key}.csv'".format(key=key)
+            stream = StringIO()
+            writer = csv.writer(stream)
+            writer.writerow(["title", "brand", "price"])
+            for p in self.results[key]:
+                writer.writerow([p["title"], p["brand"], p["price"]])
+            stream.seek(0)
+            csv_binary = stream.getvalue().encode('shift-jis')
+            return csv_binary
+        except Exception as e:
+            print(e)
+            response.content_type = 'application/text'
+            lines = "title,brand,price\n"
+            for p in self.results[key]:
+                lines = lines + p["title"] + "," + p["brand"] + "," + p["price"] + "\n"
+            return lines
 
     def debug(self):
         return json.dumps(self.queue)
