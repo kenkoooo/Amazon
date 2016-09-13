@@ -6,11 +6,14 @@ $(document).ready(function () {
         status.forEach(function (item) {
             var status = "";
             if (item["status"] == "done") {
-                status = "<a href='/csv/" + item["key"] + "' target='_blank'>Download</a>";
-            } else {
-                status = item["status"];
+                status = "<a href='/csv/" + item["key"] + "' target='_blank'><span class='label label-success'>Download</span></a>";
+            } else if (item["status"] == "pending") {
+                status = '<span class="label label-info">Pending</span>';
+            } else if (item["status"] == "error") {
+                status = '<span class="label label-danger">Error</span>';
+            } else if (item["status"] == "running") {
+                status = '<span class="label label-warning">Running</span>';
             }
-
 
             var tr = '<tr>' +
                 '<th scope="row">' + item["key"] + '</th>' +
