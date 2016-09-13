@@ -11,6 +11,8 @@ $(document).ready(function () {
                 status = '<span class="label label-info">Pending</span>';
             } else if (item["status"] == "error") {
                 status = '<span class="label label-danger">Error</span>';
+            } else if (item["status"] == "blocked") {
+                status = '<span class="label label-danger">Access Blocked</span>';
             } else if (item["status"] == "running") {
                 status = '<span class="label label-warning">Running</span>';
             }
