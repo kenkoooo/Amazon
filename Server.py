@@ -28,6 +28,8 @@ def crawl(node, num):
     max_page = int((num + 24) / 24)
     while page <= max_page:
         print(page)
+        prev = len(products)
+
         try:
             url = "https://www.amazon.co.jp/b?ie=UTF8&node={node}&page={page}".format(page=page, node=node)
             bs = get_html_bs(url)
@@ -77,6 +79,9 @@ def crawl(node, num):
                 print(e)
 
             products.append(product)
+        if len(products) == prev:
+            break
+
         time.sleep(0.3)
         page += 1
     return products
