@@ -22,6 +22,8 @@ def get_html_bs(url):
 
 
 def crawl(node, num):
+    print(node)
+    print(num)
     num = int(num)
     products = []
     page = 1
