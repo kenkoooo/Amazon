@@ -39,7 +39,6 @@ def crawl(node, num):
             print("Parser")
             print(e)
             continue
-        print("Beautiful")
 
         for item in bs.find_all("div", attrs={"class": "s-item-container"}):
             product = {}
@@ -78,7 +77,6 @@ def crawl(node, num):
                 print(e)
 
             products.append(product)
-            print(product["title"])
         time.sleep(0.3)
         page += 1
     return products
