@@ -115,6 +115,9 @@ class Crawler(threading.Thread):
             try:
                 self.results[key] = crawl(node, num)
                 self.status[key] = "done"
+                if len(self.results[key]) == 0:
+                    self.status[key] = "blocked"
+
             except Exception as e:
                 self.status[key] = "error"
                 print(e)
