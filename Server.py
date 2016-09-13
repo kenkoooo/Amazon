@@ -17,7 +17,7 @@ def get_html_bs(url):
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
     })
     html = urllib.request.urlopen(request).read()
-    soup = BeautifulSoup(html, "lxml")
+    soup = BeautifulSoup(html, "html.parser")
     return soup
 
 
@@ -36,6 +36,7 @@ def crawl(node, num):
                 raise
             continue
         except Exception as e:
+            print("Parser")
             print(e)
             continue
 
