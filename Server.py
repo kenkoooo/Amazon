@@ -23,8 +23,6 @@ def get_html_bs(url):
 
 def crawl(node, num):
     num = int(num)
-    print(node)
-    print(num)
     products = []
     page = 1
     max_page = int((num + 24) / 24)
@@ -41,6 +39,7 @@ def crawl(node, num):
             print("Parser")
             print(e)
             continue
+        print("Beautiful")
 
         for item in bs.find_all("div", attrs={"class": "s-item-container"}):
             product = {}
