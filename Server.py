@@ -48,6 +48,7 @@ def crawl(node, num):
                 price = price.replace(",", "")
                 product["price"] = int(price)
             except Exception as e:
+                print("Price Error")
                 print(e)
                 product["price"] = -1
 
@@ -55,6 +56,7 @@ def crawl(node, num):
                 title = item.find("h2").get_text()
                 product["title"] = title.replace(",", " ")
             except Exception as e:
+                print("Title Error")
                 print(e)
                 product["title"] = ""
 
@@ -70,6 +72,7 @@ def crawl(node, num):
 
                     product["brand"] = spans[1].get_text()
             except Exception as e:
+                print("Brand Error")
                 print(e)
 
             products.append(product)
