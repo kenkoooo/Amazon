@@ -43,11 +43,11 @@ def crawl(node, num):
             continue
 
         if len(bs.find_all("div", attrs={"class": "s-item-container"})) == 0:
-            print("No Items")
             if page == 1:
                 page = 2
                 continue
             else:
+                print("No Items")
                 break
 
         for item in bs.find_all("div", attrs={"class": "s-item-container"}):
