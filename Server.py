@@ -135,7 +135,7 @@ class Crawler(threading.Thread):
             response.content_type = 'application/text'
             lines = "title,brand,price\n"
             for p in self.results[key]:
-                lines = lines + p["title"] + "," + p["brand"] + "," + p["price"] + "\n"
+                lines = lines + p["title"] + "," + p["brand"] + "," + str(p["price"]) + "\n"
             return lines
 
     def debug(self):
