@@ -32,6 +32,7 @@ def crawl(node, num):
 
         try:
             url = "https://www.amazon.co.jp/b?ie=UTF8&node={node}&page={page}".format(page=page, node=node)
+            print(url)
             bs = get_html_bs(url)
         except urllib.error.HTTPError as e:
             if e.code == 404:
