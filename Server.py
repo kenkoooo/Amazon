@@ -133,7 +133,7 @@ class Crawler(threading.Thread):
             for p in self.results[key]:
                 writer.writerow([p["title"], p["brand"], p["price"]])
             stream.seek(0)
-            csv_binary = stream.getvalue().encode('shift-jis')
+            csv_binary = stream.getvalue().encode('shift-jis', "ignore")
             return csv_binary
         except Exception as e:
             print(e)
