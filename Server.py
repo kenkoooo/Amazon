@@ -22,9 +22,9 @@ def get_html_bs(url):
 
 
 def crawl(node, num):
+    num = int(num)
     print(node)
     print(num)
-    num = int(num)
     products = []
     page = 1
     max_page = int((num + 24) / 24)
