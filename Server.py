@@ -46,6 +46,7 @@ def crawl(node, num):
             print("No Items")
             if page == 1:
                 page = 2
+                continue
             else:
                 break
 
