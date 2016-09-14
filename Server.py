@@ -181,7 +181,7 @@ def main():
     get("/csv/:key")(crawler.get_csv)
     get("/push/:node/:num")(crawler.push)
     crawler.start()
-    run(host="0.0.0.0", port=12345, debug=True)
+    run(host="0.0.0.0", port=80, debug=True)
 
 
 if __name__ == '__main__':
